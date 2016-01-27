@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1">
+		<title></title>
+
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.css">
+	</head>
+	<body>
+		
+		<div class="container">
+			<div id="code" class="row">
+			</div>
+			<div id="display" class="row">
+			</div>
+		</div>
+	</body>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/mustache.js/2.2.1/mustache.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+
+	<script type="text/javascript"> //variable for template starts here 
+		$(document).ready(function() {
+
+			var data = {
+				title: "Newsletter 2016 Vol. 9",
+				story_block: [
+					{
+						story_num: '1',
+						story_link: "http://blogs.sjsu.edu/humanities-arts/2016/01/25/sphinx-virtuosi-inspires-students-in-the-school-of-music-and-dance/",
+						story_image_link: "https://multimedia.getresponse.com/983/566983/photos/314630502.png",
+						story_image_alt: "Sphinx Virtuosi",
+						story_title: "Sphinx Virtuosi Inspires Music and Dance Students",
+						story_description: "The Sphinx Virtuosi recently held a three-day residency at SJSU’s School of Music and Dance, instructing SJSU students and local high schoolers.",
+					},
+					{
+						story_num: '2',
+						story_link: "http://blogs.sjsu.edu/humanities-arts/2016/01/25/lldsa-hosts-successful-linguistics-and-tesol-symposium/",
+						story_image_link: "https://multimedia.getresponse.com/983/566983/photos/314630302.png",
+						story_image_alt: "LLDSA",
+						story_title: "LLDSA Hosts Successful Symposium",
+						story_description: "Hosting both local and international speakers, the LLDSA put together a Symposium welcoming scholars and students alike.",
+					},
+					{
+						story_num: '3',
+						story_link: "http://blogs.sjsu.edu/humanities-arts/2016/01/25/sjsu-students-win-big-at-the-csa-media-arts-festival/",
+						story_title: "SJSU Students Win Big at CSA Media Arts Festival",
+						story_description: "SJSU students from the Department of Radio, Television, Film, and Theatre had a strong showing at the 2015 CSU Media Arts Festival in November.",
+						story_image_link: "https://multimedia.getresponse.com/983/566983/photos/314671802.png",
+						story_image_alt: "CSA Media Arts Festival ",
+					}
+				],
+				deans_life_link: "http://blogs.sjsu.edu/humanities-arts/2016/01/25/its-a-deans-life-vol-9/",
+				news_link: "https://blogs.sjsu.edu/humanities-arts/2016/01/25/news-2016-vol-9/"
+			};
+
+
+			var template = document.getElementById("ha-newsletter-template");
+
+			var rendered = Mustache.render(template.innerHTML, data);
+			$("#code").text( rendered );
+			$("#display").html(rendered);
+		});
+	</script>
+
+	<!--  template starts here -->
+	<script type="text/template" id="ha-newsletter-template"> 
+		<meta charset="UTF-8">
+		<table align="center" border="0" style="width: 600px;">
+		  <tbody>
+		    <tr>
+		      <!-- Newsletter Header -->
+		      <td align="center" colspan="3">
+		        <img alt="sjsu expressions newsletter header" height="76" src=
+		        "https://multimedia.getresponse.com/983/566983/photos/314523502.png" width="600">
+		      </td>
+		    </tr>
+		    <tr>
+		      <!-- Newsletter title -->
+		      <td colspan="3">
+		        <div style="text-align: center;">
+		          <span style=
+		          "font-family: Verdana, sans-serif; font-weight: bold; color: #c79900;">{{ title }}</span>
+		        </div>
+		      </td>
+		    </tr>
+		    <tr>
+		      <!-- Divider bar -->
+		      <td align="center" colspan="3" style="padding: 4px 0px; margin: 0px;" valign="top">
+		        <div style=
+		        "height: 2px; line-height: 2px; border-top-width: 3px; border-top-style: solid; border-top-color: #dedede;">
+		        </div>
+		      </td>
+		    </tr>
+		    <tr>
+		      <td valign="top">
+		        <table>
+		          <!-- begin nested -->
+		          <tbody>
+		          	{{#story_block}}
+			            <tr>
+			              <!-- Story Image {{story_num}}-->
+			              <td>
+			                <a href='{{{story_link}}}' target="_blank" title=""><img alt="{{story_image_alt}}" src=
+			                '{{story_image_link}}' style=
+			                "padding: 10px 20px 20px 10px; border-style: none;" width="195"></a>
+			              </td><!-- Story Content {{story_num}} -->
+			              <td align="left" colspan="1" style="padding: 11px 10px 0px 0px;" valign="top">
+			                <!-- Story Title --> <span style="font-family: Verdana, sans-serif;"><span style=
+			                "font-weight: bold; font-style: italic; color: #005a8b;">{{story_title}}</span>
+			                <br></span> <!-- Story Body -->
+			                <div>
+			                  <span style="font-family: Verdana, sans-serif;">{{story_description}} <a href=
+			                  "{{{story_link}}}"
+			                  rel="nofollow" style="color: #005a8b;" target="_blank" title="">Read
+			                  more</a></span>
+			                </div>
+			              </td>
+			            </tr>
+		            {{/story_block}}
+		          </tbody>
+		        </table>
+		      </td><!-- end nested --><!-- Side Bar -->
+		      <td height="500" valign="top" width="84">
+		        <!-- News --><a href="{{{news_link}}}"
+		        rel="nofollow" target="_blank" title=""><img alt="news button" height="83" src=
+		        "https://multimedia.getresponse.com/983/566983/photos/314523902.png" style=
+		        "padding-top: 10px; border-style: none;" width="82"></a><br>
+		        <!-- Events --> <a href="http://blogs.sjsu.edu/humanities-arts/category/events/" rel=
+		        "nofollow" target="_blank" title=""><img alt="events button" height="82" src=
+		        "https://multimedia.getresponse.com/983/566983/photos/314524002.png" style=
+		        "padding-top: 14px; border-style: none;" width="82"></a><br>
+		        <!-- Portraits --> <a href=
+		        "http://blogs.sjsu.edu/humanities-arts/category/portraits/?utm_source=getresponse&amp;utm_medium=email&amp;utm_campaign=humanitiesarts&amp;utm_content=College%20of%20Humanities%20and%20the%20Arts%2C%20SJSU%2C%20Expressions%20Newsletter"
+		        rel="nofollow" target="_blank" title=""><img alt="portraits button" height="82" src=
+		        "https://multimedia.getresponse.com/983/566983/photos/314524102.png" style=
+		        "padding-top: 14px; border-style: none;" width="82"></a><br>
+		        <!-- Media --> <a href=
+		        "http://blogs.sjsu.edu/humanities-arts/category/media/?utm_source=getresponse&amp;utm_medium=email&amp;utm_campaign=humanitiesarts&amp;utm_content=College%20of%20Humanities%20and%20the%20Arts%2C%20SJSU%2C%20Expressions%20Newsletter"
+		        rel="nofollow" target="_blank" title=""><img alt="media button" height="82" src=
+		        "https://multimedia.getresponse.com/983/566983/photos/314524202.png" style=
+		        "padding-top: 14px; border-style: none;" width="82"></a><br>
+		        <!-- It's a Dean's Life --> <a href='{{{deans_life_link}}}' rel="nofollow"
+		        target="_blank" title=""><img alt="deans life button" height="82" src=
+		        "https://multimedia.getresponse.com/983/566983/photos/314524302.png" style=
+		        "padding-top: 14px; border-style: none;" width="82"></a>
+		      </td>
+		    </tr>
+		  </tbody>
+		</table>
+		<table align="center">
+		  <tbody>
+		    <tr>
+		      <!-- Story Submission -->
+		      <td align="left" colspan="1" style=
+		      "padding: 0px 2px 5px 10px; font-family: Georgia, serif; font-style: italic; color: #c79900;"
+		      valign="top">
+		        <span style=
+		        "font-weight: bold; font-family: Georgia, serif; font-style: italic; color: #c79900;"><a href="http://www.sjsu.edu/humanitiesandarts/marketing_communications_team/hanewsform/index.html"
+		        rel="nofollow" style="color: #c79900;" target="_blank" title="">Submit a story</a></span>
+		      </td><!-- Social Media Icons -->
+		      <td align="right" colspan="1" rowspan="2">
+		        <a href=
+		        "https://www.facebook.com/CollegeOfHumanitiesAndTheArts?utm_source=getresponse&amp;utm_medium=email&amp;utm_campaign=humanitiesarts&amp;utm_content=College%20of%20Humanities%20and%20the%20Arts%2C%20SJSU%2C%20Expressions%20Newsletter"
+		        rel="nofollow" target="_blank" title=""><img alt="facebook link" src=
+		        "https://multimedia.getresponse.com/983/566983/photos/314524402.png" style=
+		        "padding: 2px; border-style: none;"></a> <a href=
+		        "https://twitter.com/sjsu_HA?utm_source=getresponse&amp;utm_medium=email&amp;utm_campaign=humanitiesarts&amp;utm_content=College%20of%20Humanities%20and%20the%20Arts%2C%20SJSU%2C%20Expressions%20Newsletter"
+		        rel="nofollow" target="_blank" title=""><img alt="twitter link" src=
+		        "https://multimedia.getresponse.com/983/566983/photos/314524502.png" style=
+		        "padding: 2px; border-style: none;"></a> <a href="https://instagram.com/sjsu_ha/" rel=
+		        "nofollow" target="_blank" title=""><img alt="instagram link" src=
+		        "https://multimedia.getresponse.com/983/566983/photos/314524602.png" style=
+		        "padding: 2px; border-style: none;"></a> <a href=
+		        "https://www.youtube.com/user/SJSUCollegeHA?utm_source=getresponse&amp;utm_medium=email&amp;utm_campaign=humanitiesarts&amp;utm_content=College%20of%20Humanities%20and%20the%20Arts%2C%20SJSU%2C%20Expressions%20Newsletter"
+		        rel="nofollow" target="_blank" title=""><img alt="youtube link" src=
+		        "https://multimedia.getresponse.com/983/566983/photos/314524702.png" style=
+		        "padding: 2px; border-style: none;"></a>
+		      </td>
+		    </tr>
+		    <tr>
+		      <!-- Subscribe Link -->
+		      <td align="left" colspan="1" style=
+		      "padding: 5px 2px 5px 10px; font-family: Georgia, serif; font-style: italic; color: #c79900;"
+		      valign="top">
+		        <a href=
+		        "https://app.getresponse.com/site/humanitiesarts/webform.html?wid=2315502&amp;u=Siog?utm_source=getresponse&amp;utm_medium=email&amp;utm_campaign=humanitiesarts&amp;utm_content=College%20of%20Humanities%20and%20the%20Arts%2C%20SJSU%2C%20Expressions%20Newsletter"
+		        rel="nofollow" style="color: #c79900; font-weight: bold;" target="_blank" title=
+		        "">Subscribe to the Expressions Newsletter</a>
+		      </td>
+		    </tr>
+		    <tr>
+		      <!-- Newsletter Footer -->
+		      <td align="center" colspan="2">
+		        <img alt="" height="50" src=
+		        "https://multimedia.getresponse.com/983/566983/photos/314524802.png" style=
+		        "padding: 10px 0px 0px 0px;" width="600">
+		      </td>
+		    </tr>
+		  </tbody>
+		</table>
+
+	</script>
+
+
+
+
+
+</html>
